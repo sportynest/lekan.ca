@@ -10,8 +10,17 @@
       icon: "fas fa-code"
     - name: "JavaScript"
       icon: "fab fa-js"
+    - name: "React"
+      icon: "fab fa-react"
     - name: "C/C++"
       icon: "fas fa-code"
+    - name: "TypeScript"
+      icon: "fab fa-js"
+
+- category: "Backend"
+  items:
+    - name: "SQLite"
+      icon: "fas fa-database"
 
 - category: "Machine Learning / AI"
   items:
@@ -23,5 +32,3 @@
       icon: "fab fa-python"
     - name: "Text Preprocessing"
       icon: "fas fa-file-alt"
-    - name: "TF-IDF"
-      icon: "fas fa-code"
