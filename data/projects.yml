@@ -1,19 +1,19 @@
-- id: "sentiment-analysis"
-  title: "Sentiment Analysis of Movie Reviews"
-  short_description: "Predicting sentiment (positive/negative) of movie reviews using NLP and machine learning. (Scikit-learn, NLTK, Pandas)"
-  full_description: "This project delved into the application of natural language processing (NLP) techniques for classifying sentiment (positive or negative) within movie reviews. Leveraging key libraries like scikit-learn, NLTK, and Pandas, I meticulously preprocessed the text data, including tokenization, stop word removal, and stemming. To extract meaningful features, I employed the Term Frequency-Inverse Document Frequency (TF-IDF) weighting scheme." 
-  full_descriptiontwo: "Extensive model exploration revealed a tie between two top performers Support Vector Machines (SVM) with both linear and RBF kernels achieved an impressive accuracy of 89.9%. Due to its simplicity and ease of deployment, I prioritized the linear SVM as the best model. Analysis of the confusion matrix highlights a subtle bias towards positive classifications, presenting an interesting area for further optimization and potential exploration of techniques to address class imbalance."
-  img: "images/1*Je65TdJbDm55KQCja7rPVw.png"
-  github_link: "https://github.com/sportynest/setiment-analysis-model"
-
 - id: "studybuddy"
-  title: "StudyBuddy"
-  short_description: "An AI-powered study companion application built with React and Cloudflare Workers, integrating multiple AI APIs for intelligent educational assistance."
-  full_description: "StudyBuddy AI is an innovative educational platform designed to revolutionize the way students learn and interact with study materials. Leveraging React for a dynamic frontend and Cloudflare Workers for a serverless backend, this project seamlessly integrates multiple AI APIs, including Anthropic's Claude, to provide intelligent, context-aware study assistance. The application offers personalized learning experiences, real-time explanations across various subjects, and chat-based interactions for in-depth topic exploration."
-  full_descriptiontwo: "Key technical achievements include implementing a scalable architecture for real-time AI interactions, robust user authentication with JWT and role-based access control, and a tiered subscription model integrated with Stripe. Advanced features such as PDF document analysis, smart text selection, and version control for study materials enhance the learning experience. Performance optimizations like React Query for state management, code splitting, and lazy loading resulted in a 40% reduction in load times. The project also focuses on security, utilizing JWT tokens and bcrypt for password hashing to ensure user data protection."
-  img: 
+  title: "StudyBuddy by Cognora"
+  short_description: "Flagship AI-powered educational platform of Cognora, built with React and Cloudflare Workers, delivering personalized learning experiences through intelligent AI integration."
+  full_description: "StudyBuddy is Cognora's innovative educational platform designed to revolutionize personalized learning. As the founding project of Cognora (cognora.ca), it leverages React for a dynamic frontend and Cloudflare Workers for a serverless backend. The platform seamlessly integrates multiple AI APIs, including Anthropic's Claude, Google's Gemini, and OpenAI's ChatGPT and Several Others, to provide intelligent, context-aware study assistance. Core features include personalized learning experiences, real-time explanations across various subjects, and sophisticated chat-based interactions for in-depth topic exploration."
+  full_descriptiontwo: "The platform demonstrates technical excellence through its scalable serverless architecture, enabling real-time AI interactions and future growth. Key features include robust user authentication with JWT and role-based access control, alongside a successful tiered subscription model integrated with Stripe. Advanced capabilities such as PDF document analysis, smart text selection, and version control enhance the learning experience. Strategic performance optimizations including React Query for state management, code splitting, and lazy loading achieved a 40% reduction in load times, while maintaining high security standards through JWT tokens and bcrypt password hashing."
+  img: "images/StudyBuddy 1200x675.png"
   github_link: 
   weblink: "https://studdybuddy.ca"
+
+- id: "multi-llm-api-toolkit"
+  title: "Multi-LLM API Toolkit"
+  short_description: "A lightweight Node.js library for unified API interactions across multiple LLMs (Claude, ChatGPT, Gemini, Grok) with streaming and multi-modal support."
+  full_description: "Developed a comprehensive Node.js library that streamlines API interactions across multiple large language models. The toolkit provides a unified interface for Claude, ChatGPT, Gemini, and Grok, featuring standardized streaming capabilities, multi-modal support for text and image inputs, and advanced features like cache control and PDF handling."
+  full_descriptiontwo: "Key technical achievements include implementing robust error handling, automatic base64 image conversion, timeout management, and abort controller support. The library features comprehensive test coverage using Jest, and maintains high code quality through ESLint integration. Published as an open-source project under MIT license with detailed documentation and usage examples."
+  img:
+  github_link: "https://github.com/Cognora/multi-llm-api-toolkit"
 
 - id: "bible-language-model"
   title: "Bible-Based Language Model (TBC)"
@@ -23,3 +23,11 @@
   full_descriptiontwo: "A hybrid training approach was employed, leveraging transfer learning from smaller to larger models to optimize performance. Custom evaluation metrics were developed to assess the model's capability in tasks specific to biblical understanding. The evaluation framework provides insights into the model's performance across different aspects of biblical knowledge and interpretation. While initial results show promise in capturing biblical language patterns, ongoing work focuses on refining the model's accuracy and contextual understanding."
   img: 
   weblink: 
+
+- id: "sentiment-analysis"
+  title: "Sentiment Analysis of Movie Reviews"
+  short_description: "Predicting sentiment (positive/negative) of movie reviews using NLP and machine learning. (Scikit-learn, NLTK, Pandas)"
+  full_description: "This project delved into the application of natural language processing (NLP) techniques for classifying sentiment (positive or negative) within movie reviews. Leveraging key libraries like scikit-learn, NLTK, and Pandas, I meticulously preprocessed the text data, including tokenization, stop word removal, and stemming. To extract meaningful features, I employed the Term Frequency-Inverse Document Frequency (TF-IDF) weighting scheme." 
+  full_descriptiontwo: "Extensive model exploration revealed a tie between two top performers Support Vector Machines (SVM) with both linear and RBF kernels achieved an impressive accuracy of 89.9%. Due to its simplicity and ease of deployment, I prioritized the linear SVM as the best model. Analysis of the confusion matrix highlights a subtle bias towards positive classifications, presenting an interesting area for further optimization and potential exploration of techniques to address class imbalance."
+  img: "images/1*Je65TdJbDm55KQCja7rPVw.png"
+  github_link: "https://github.com/sportynest/setiment-analysis-model"
