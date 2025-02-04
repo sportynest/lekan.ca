@@ -4,6 +4,7 @@ import { Inter } from "next/font/google"
 import { ThemeProvider } from "next-themes"
 import Header from "./components/Header"
 import Footer from "./components/Footer"
+import { SpeedInsights } from "@vercel/speed-insights/next"
 import type React from "react"
 
 const inter = Inter({ subsets: ["latin"] })
