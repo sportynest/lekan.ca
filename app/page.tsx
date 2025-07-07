@@ -19,10 +19,10 @@ export default async function Home() {
     <div className="space-y-16">
       <section className="text-center">
         <h1 className="text-5xl font-bold mb-4">Lekan Soyewo</h1>
-        <p className="text-xl text-muted-foreground">ML Engineer & Software Developer</p>
+        <p className="text-lg text-muted-foreground">ML Engineer & Software Engineer</p>
       </section>
 
-      <section className="bg-card text-card-foreground p-6 rounded-lg">
+      <section className="bg-card text-card-foreground rounded-lg">
         <h2 className="text-3xl font-semibold mb-4">About Me</h2>
         <p className="text-lg">
           As a third-year York University Computer Science student, my passion for technology drives me to innovate.
@@ -38,16 +38,18 @@ export default async function Home() {
           {featuredProjects.map((project) => (
             <div
               key={project.id}
-              className="bg-card text-card-foreground p-6 rounded-lg transition-transform hover:scale-105"
+              className="bg-card text-card-foreground p-6 rounded-lg"
             >
               {project.image && (
-                <Image
-                  src={project.image || "/placeholder.svg"}
-                  alt={project.title}
-                  width={600}
-                  height={338}
-                  className="w-full h-auto mb-4 rounded"
-                />
+                <div className="w-full aspect-[16/9] mb-4 rounded overflow-hidden bg-muted flex items-center justify-center group">
+                  <Image
+                    src={project.image || "/placeholder.svg"}
+                    alt={project.title}
+                    width={600}
+                    height={338}
+                    className="object-cover w-full h-full transition-transform duration-200 group-hover:scale-105"
+                  />
+                </div>
               )}
               <h3 className="text-2xl font-semibold mb-2">{project.title}</h3>
               <p className="mb-4 text-muted-foreground">{project.shortDescription}</p>
@@ -55,7 +57,8 @@ export default async function Home() {
                 href={project.weblink || project.githubLink || ""}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-primary hover:text-accent-foreground transition-colors"
+                className="text-primary hover:text-accent-foreground transition-colors inline-block transform hover:scale-105"
+                style={{ transition: "color 0.2s, transform 0.2s" }}
               >
                 Learn More →
               </Link>
@@ -63,7 +66,11 @@ export default async function Home() {
           ))}
         </div>
         <div className="mt-8 text-center">
-          <Link href="/projects" className="text-primary hover:text-accent-foreground transition-colors">
+          <Link
+            href="/projects"
+            className="text-primary hover:text-accent-foreground transition-colors inline-block transform hover:scale-105"
+            style={{ transition: "color 0.2s, transform 0.2s" }}
+          >
             View All Projects →
           </Link>
         </div>
@@ -74,7 +81,7 @@ export default async function Home() {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {recentPosts.slice(0, 3).map((post) => (
             <Link key={post.slug} href={`/blog/${post.slug}`}>
-              <div className="bg-card text-card-foreground p-6 rounded-lg transition-transform hover:scale-105">
+              <div className="bg-card text-card-foreground p-6 rounded-lg transition-transform hover:bg-muted">
                 <h3 className="text-2xl font-semibold mb-2">{post.title}</h3>
                 <p className="text-muted-foreground mb-4">{post.excerpt}</p>
                 <span className="text-sm text-accent-foreground">{post.date}</span>
@@ -83,9 +90,15 @@ export default async function Home() {
           ))}
         </div>
         <div className="mt-8 text-center">
-          <a href="https://lekan.blog" target="_blank" rel="noopener noreferrer" className="text-primary hover:text-accent-foreground transition-colors">
+          <Link
+            href="https://lekan.blog"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-primary hover:text-accent-foreground transition-colors inline-block transform hover:scale-105"
+            style={{ transition: "color 0.2s, transform 0.2s" }}
+          >
             View All Posts →
-          </a>
+          </Link>
         </div>
       </section>
     </div>
