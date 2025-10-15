@@ -25,3 +25,30 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+ 
+# OS
+.DS_Store
+
+# Editors/IDEs
+.vscode/
+.idea/
+
+# Logs
+logs
+*.log
+
+# Caches
+.eslintcache
+.cache
+.npm-cache/
+
+# Next.js additional
+.next/cache
+
+# Build/Test artifacts
+coverage
+dist
+
+# Turbo/Compiler
+.turbo
+.swc
