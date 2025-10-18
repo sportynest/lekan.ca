@@ -1,0 +1,127 @@
+@keyframes slideInRight {
+  from {
+    opacity: 0;
+    transform: translateX(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+.project-card {
+  background-color: var(--background-main);
+  color: var(--text-main);
+  border-radius: var(--radius-xl);
+  max-width: 300px;
+  display: flex;
+  flex-direction: column;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  animation: slideInRight 0.6s ease-out backwards;
+}
+
+.project-content {
+  padding: var(--padding-md);
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-md);
+  border-radius: var(--radius-xl);
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
+  border: 1px solid var(--border-color);
+  border-top: none;
+
+}
+
+.project-image-container {
+  aspect-ratio: 16 / 9;
+  border-radius: var(--radius-xl);
+  border-bottom-left-radius: 0;
+  border-bottom-right-radius: 0;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+
+.project-image {
+  width: 100%;
+  height: 100%;
+  max-width: 300px;
+  object-fit: cover;
+  transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.project-card:hover .project-image {
+  transform: scale(1.1);
+}
+
+.project-title {
+  font-size: var(--font-size-md);
+  font-weight: var(--font-weight-medium);
+  color: var(--text-main);
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.project-description {
+  color: var(--text-main);
+  font-size: var(--font-size-sm);
+  line-height: 1.5;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.project-link {
+  color: var(--text-main);
+  font-size: var(--font-size-sm);
+  padding: var(--padding-sm);
+  background-color: var(--background-secondary);
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--border-color);
+  text-decoration: none;
+  font-weight: var(--font-weight-medium);
+  display: inline-block;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  margin-top: auto;
+  text-align: center;
+  width: 100%;
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+}
+
+.project-link:hover {
+  background-color: var(--background-hover);
+}
+
+@media (max-width: 400px) {
+  .project-card {
+    max-width: 250px;
+  }
+
+  .project-image {
+    max-width: 250px;
+  }
+
+  .project-description {
+    display: -webkit-box;
+    -webkit-line-clamp: 5;
+    -webkit-box-orient: vertical;
+    line-clamp: 5;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+}
+
+@media (max-width: 300px) {
+  .project-card {
+    max-width: 200px;
+  }
+}
+
