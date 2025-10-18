@@ -1,104 +1,120 @@
-export const metadata = {
-  title: "Lekan - ML & Software Engineer",
-  description:
-    "Welcome to the personal website of Lekan Soyewo, a passionate ML engineer and software developer showcasing featured projects, highlighted blog posts, and more.",
-};
-
 import Link from "next/link"
-import Image from "next/image"
 import { getBlogPosts } from "@/lib/blog"
+import "./home.css"
 import { projects } from "./data/projects"
+import { inspirations } from "./data/inspirations"
+import SkillsExperience from "./components/SkillsExperience"
+import ProjectSection from "./components/ProjectSection"
 
-const featuredProjects = projects.slice(0, 2)
-
+// Fisher-Yates shuffle algorithm
+function shuffleArray<T>(array: T[]): T[] {
+  const shuffled = [...array]
+  for (let i = shuffled.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1))
+    ;[shuffled[i], shuffled[j]] = [shuffled[j], shuffled[i]]
+  }
+  return shuffled
+}
 
 export default async function Home() {
   const recentPosts = await getBlogPosts()
+  const shuffledInspirations = shuffleArray(inspirations)
 
   return (
-    <div className="space-y-16">
-      <section className="text-center">
-        <h1 className="text-5xl font-bold mb-4">Lekan Soyewo</h1>
-        <p className="text-lg text-muted-foreground">ML Engineer & Software Engineer</p>
+    <div className="home-container">
+      <section id="about" className="me-section">
+        <div className="me-description-wrapper">
+          <span className="me-name">Lekan Soyewo</span>
+          <span className="me-inline">
+            <span className="me-intro-text">I am a</span>
+            <span className="me-description-highlight">Software Engineer</span>
+          </span>
+          <span className="me-inline">
+            <span className="me-inline-text">and I</span>
+            <span className="me-description-highlight">train machine learning models</span>
+          </span>
+        </div>
       </section>
 
-      <section className="bg-card text-card-foreground rounded-lg">
-        <h2 className="text-3xl font-semibold mb-4">About Me</h2>
-        <p className="text-lg">
-          As a third-year York University Computer Science student, my passion for technology drives me to innovate.
-          Driven by the potential of machine learning and its applications, I'm currently exploring large language
-          models and their wider impact within the AI landscape. I'm eager to contribute to innovative solutions in this
-          domain.
-        </p>
+      <section id="projects" className="projects-section-wrapper">
+        <ProjectSection projects={projects} />
       </section>
 
-      <section>
-        <h2 className="text-3xl font-semibold mb-8 border-b border-border pb-2">Featured Projects</h2>
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-          {featuredProjects.map((project) => (
-            <div
-              key={project.id}
-              className="bg-card text-card-foreground p-6 rounded-lg"
-            >
-              {project.image && (
-                <div className="w-full aspect-[16/9] mb-4 rounded overflow-hidden bg-muted flex items-center justify-center group">
-                  <Image
-                    src={project.image || "/placeholder.svg"}
-                    alt={project.title}
-                    width={600}
-                    height={338}
-                    className="object-cover w-full h-full transition-transform duration-200 group-hover:scale-105"
-                  />
-                </div>
-              )}
-              <h3 className="text-2xl font-semibold mb-2">{project.title}</h3>
-              <p className="mb-4 text-muted-foreground">{project.shortDescription}</p>
-              <Link
-                href={project.weblink || project.githubLink || ""}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-primary hover:text-accent-foreground transition-colors inline-block transform hover:scale-105"
-                style={{ transition: "color 0.2s, transform 0.2s" }}
-              >
-                Learn More →
+      <section id="experience" className="employment-section">
+        <SkillsExperience />
+      </section>
+
+      <section id="education" className="education-section">
+        <h2 className="education-intro">I am</h2>
+        <div className="education-typography" role="group" aria-label="Current education details">
+          <span className="education-inline">
+            <span className="education-inline-text">pursuing a</span>
+            <span className="education-line current-education-degree">Bachelor of Science in Computer Science</span>
+          </span>
+          <span className="education-inline">
+            <span className="education-inline-text">at</span>
+            <span className="education-line current-education-school">York University</span>
+          </span>
+          <span className="education-inline">
+            <span className="education-inline-text">and graduating</span>
+            <span className="education-line education-meta-highlight">June 2026</span>
+          </span>
+        </div>
+
+        <div className="coursework-section" role="group" aria-label="Current coursework details">
+          <span className="coursework-intro">Some relevant courses I've taken include</span>
+          <div className="coursework-list">
+            <span className="coursework-list-item">Machine Learning</span>
+            <span className="coursework-list-item">Artificial Intelligence</span>
+            <span className="coursework-list-item">Computer Vision</span>
+            <span className="coursework-list-item">Robotics</span>
+          </div>
+        </div>
+      </section>
+
+      <section id="blog" className="blog-section">
+        <h2 className="blog-section-title">Here are some of my rarely documented thoughts:</h2>
+        <div className="blog-grid">
+          {recentPosts.slice(0, 3).map((post) => (
+            <div key={post.slug} className="blog-card">
+              <Link href={`https://lekan.blog/blog/${post.slug}`} target="_blank" rel="noopener noreferrer">
+                <h3 className="blog-card-title">{post.title}</h3>
+                <p className="blog-card-excerpt">{post.excerpt}</p>
               </Link>
             </div>
           ))}
         </div>
-        <div className="mt-8 text-center">
-          <Link
-            href="/projects"
-            className="text-primary hover:text-accent-foreground transition-colors inline-block transform hover:scale-105"
-            style={{ transition: "color 0.2s, transform 0.2s" }}
-          >
-            View All Projects →
-          </Link>
-        </div>
-      </section>
-
-      <section>
-        <h2 className="text-3xl font-semibold mb-8 border-b border-border pb-2">Highlighted Blog Posts</h2>
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {recentPosts.slice(0, 3).map((post) => (
-            <Link key={post.slug} href={`/blog/${post.slug}`}>
-              <div className="bg-card text-card-foreground p-6 rounded-lg transition-transform hover:bg-muted">
-                <h3 className="text-2xl font-semibold mb-2">{post.title}</h3>
-                <p className="text-muted-foreground mb-4">{post.excerpt}</p>
-                <span className="text-sm text-accent-foreground">{post.date}</span>
-              </div>
-            </Link>
-          ))}
-        </div>
-        <div className="mt-8 text-center">
+        {/*
+        <div className="blog-view-all-section">
           <Link
             href="https://lekan.blog"
             target="_blank"
             rel="noopener noreferrer"
-            className="text-primary hover:text-accent-foreground transition-colors inline-block transform hover:scale-105"
-            style={{ transition: "color 0.2s, transform 0.2s" }}
+            className="blog-read-more-link"
           >
-            View All Posts →
+            Read More →
           </Link>
+        </div>
+        */}
+      </section>
+
+      <section id="inspirations" className="inspirations-section">
+        <h2 className="inspirations-section-title">Some of my inspirations:</h2>
+        <div className="inspirations-grid">
+          {shuffledInspirations.map((inspiration) => (
+            <a
+              key={inspiration.id}
+              href={inspiration.contentUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inspirations-image-card"
+            >
+              <img 
+                src={inspiration.imageUrl}
+                alt={inspiration.title}
+              />
+            </a>
+          ))}
         </div>
       </section>
     </div>

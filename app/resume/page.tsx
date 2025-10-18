@@ -4,7 +4,7 @@ export const metadata = {
     "View the resume of Lekan Soyewo, a software engineer and Computer Science senior with advanced AI expertise, professional achievements, education, and projects.",
 };
 
-import { FaGithub } from "react-icons/fa"
+import { GithubIcon } from "hugeicons-react"
 
 const profileText =
   "Accomplished Computer Science senior at York University, excelling in software engineering fundamentals and innovative AI development. Proficient in Python, Java, C/C++, and JavaScript, I've engineered production-ready applications using machine learning and NLP to address complex challenges and deliver tangible business outcomes. With hands-on experience in scalable web services, I'm poised to drive high-impact solutions in dynamic tech environments."
@@ -110,7 +110,7 @@ export default function Resume() {
                 rel="noopener noreferrer"
                 className="text-foreground hover:text-primary transition-colors"
               >
-                <FaGithub size={28} />
+                <GithubIcon size={28} />
               </a>
             </div>
           </div>
