@@ -11,8 +11,8 @@ import "./app.css"
 const inter = Inter({ subsets: ["latin"] })
 
 export const metadata: Metadata = {
-  title: "Lekan Soyewo - Portfolio",
-  description: "ML Engineer & Software Engineer",
+  title: "Meet Lekan",
+  description: "Engineer, Philosopher, and Technologist",
   icons: {
     icon: "/favicon.ico",
   },
