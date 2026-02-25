@@ -349,6 +349,7 @@
 
 .coursework-list {
   display: flex;
+  flex-wrap: wrap;
   gap: var(--spacing-xs);
 }
 
@@ -361,7 +362,6 @@
   border-radius: var(--radius-xl);
   border: 1px solid var(--border-color);
   transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-  white-space: nowrap;
 }
 
 .coursework-list-item:hover {
