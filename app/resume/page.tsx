@@ -98,7 +98,7 @@ export default function Resume() {
           <p className="resume-contact">
             <a href="mailto:lekan.soyewo@icloud.com">lekan.soyewo@icloud.com</a>
             <span aria-hidden="true">·</span>
-            <a href="https://lekan.ca">lekan.ca</a>
+            <a href="https://www.lekan.ca">lekan.ca</a>
             <span aria-hidden="true">·</span>
             <a href="https://github.com/sportynest" target="_blank" rel="noopener noreferrer">
               github.com/sportynest

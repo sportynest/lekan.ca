@@ -1,5 +1,5 @@
 export const site = {
-  url: "https://lekan.ca",
+  url: "https://www.lekan.ca",
   name: "Lekan (Paul) Soyewo",
   givenName: "Lekan",
   alternateName: "Paul Soyewo",
