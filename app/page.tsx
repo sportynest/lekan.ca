@@ -3,7 +3,8 @@ import { getBlogPosts } from "@/lib/blog"
 import "./home.css"
 import { projects } from "./data/projects"
 import { inspirations } from "./data/inspirations"
-import SkillsExperience from "./components/SkillsExperience"
+import PicksHubShowcase from "./components/PicksHubShowcase"
+import ThemeLink from "./components/ThemeLink"
 import ProjectSection from "./components/ProjectSection"
 
 // Fisher-Yates shuffle algorithm
@@ -24,45 +25,44 @@ export default async function Home() {
     <div className="home-container">
       <section id="about" className="me-section">
         <div className="me-description-wrapper">
-          <span className="me-name">Lekan Soyewo</span>
+          <h1 className="me-name">Lekan (Paul) Soyewo</h1>
           <span className="me-inline">
             <span className="me-intro-text">I am a</span>
-            <span className="me-description-highlight">Software Engineer</span>
+            <span className="me-description-highlight">Product Engineer</span>
           </span>
           <span className="me-inline">
             <span className="me-inline-text">and I</span>
-            <span className="me-description-highlight">train machine learning models</span>
+            <span className="me-description-highlight">design, build and ship beautiful products</span>
           </span>
         </div>
       </section>
 
-      <section id="projects" className="projects-section-wrapper">
-        <ProjectSection projects={projects} />
+      <section id="pickshub" className="projects-section-wrapper" aria-label="PicksHub">
+        <PicksHubShowcase />
       </section>
 
-      <section id="experience" className="employment-section">
-        <SkillsExperience />
+      <section id="projects" className="projects-section-wrapper">
+        <ProjectSection projects={projects} title="Before PicksHub, I built:" />
       </section>
 
       <section id="education" className="education-section">
-        <h2 className="education-intro">I am</h2>
-        <div className="education-typography" role="group" aria-label="Current education details">
+        <h2 className="education-intro">I graduated with a</h2>
+        <div className="education-typography" role="group" aria-label="Education details">
           <span className="education-inline">
-            <span className="education-inline-text">pursuing a</span>
             <span className="education-line current-education-degree">Bachelor of Science in Computer Science</span>
           </span>
           <span className="education-inline">
-            <span className="education-inline-text">at</span>
+            <span className="education-inline-text">from</span>
             <span className="education-line current-education-school">York University</span>
           </span>
           <span className="education-inline">
-            <span className="education-inline-text">and graduating</span>
+            <span className="education-inline-text">in</span>
             <span className="education-line education-meta-highlight">June 2026</span>
           </span>
         </div>
 
-        <div className="coursework-section" role="group" aria-label="Current coursework details">
-          <span className="coursework-intro">Some relevant courses I've taken include</span>
+        <div className="coursework-section" role="group" aria-label="Coursework details">
+          <span className="coursework-intro">Some relevant courses I took include</span>
           <div className="coursework-list">
             <span className="coursework-list-item">Machine Learning</span>
             <span className="coursework-list-item">Artificial Intelligence</span>
@@ -77,10 +77,10 @@ export default async function Home() {
         <div className="blog-grid">
           {recentPosts.slice(0, 3).map((post) => (
             <div key={post.slug} className="blog-card">
-              <Link href={`https://lekan.blog/blog/${post.slug}`} target="_blank" rel="noopener noreferrer">
+              <ThemeLink href={`https://lekan.blog/blog/${post.slug}`} target="_blank" rel="noopener noreferrer">
                 <h3 className="blog-card-title">{post.title}</h3>
                 <p className="blog-card-excerpt">{post.excerpt}</p>
-              </Link>
+              </ThemeLink>
             </div>
           ))}
         </div>
