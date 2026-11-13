@@ -14,6 +14,7 @@ const Footer = () => {
             target="_blank"
             rel="noopener noreferrer"
             className="footer-social-icon first-child"
+            aria-label="GitHub"
           >
             <Github01Icon size={16} />
           </a>
@@ -22,6 +23,7 @@ const Footer = () => {
             target="_blank"
             rel="noopener noreferrer"
             className="footer-social-icon"
+            aria-label="LinkedIn"
           >
             <Linkedin01Icon size={16} />
           </a>
