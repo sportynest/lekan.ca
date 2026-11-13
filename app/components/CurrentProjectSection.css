@@ -7,19 +7,43 @@
   to {
     opacity: 1;
     transform: translateY(0);
-    max-height: 300px;
+    max-height: 360px;
   }
 }
 
 .current-project-section {
-  display: flex;
-  flex-direction: row;
+  /* Grid, not flex: the row keeps the image's height while the open/close
+     animation clips the panel, so the text never re-flows mid-animation */
+  display: grid;
+  grid-template-columns: minmax(400px, 40%) minmax(0, 1fr);
+  align-items: stretch;
   padding: var(--padding-lg) 0;
   padding-bottom: 0;
   border-radius: var(--radius-xl);
-  max-height: 300px;
+  max-height: 360px;
   animation: unfold 0.5s ease-out forwards;
   overflow: hidden;
+}
+
+@keyframes fold {
+  from {
+    opacity: 1;
+    transform: translateY(0);
+    max-height: var(--panel-height, 360px);
+    padding-top: var(--padding-lg);
+  }
+  to {
+    opacity: 0;
+    transform: translateY(-12px);
+    max-height: 0;
+    padding-top: 0;
+  }
+}
+
+.current-project-section.is-closing {
+  overflow: hidden;
+  pointer-events: none;
+  animation: fold 0.35s cubic-bezier(0.4, 0, 0.2, 1) forwards;
 }
 
 .current-project-image-container {
@@ -27,8 +51,9 @@
   overflow: hidden;
   display: flex;
   align-items: center;
-  max-width: 40%;
-  min-width: 400px;
+  width: 100%;
+  aspect-ratio: 3 / 2;
+  align-self: start;
   justify-content: center;
 }
 
@@ -40,18 +65,23 @@
 
 .current-project-right {
   text-align: left;
-  padding: var(--padding-xs) var(--padding-md);
+  padding: 0 var(--padding-md);
   display: flex;
-  gap: var(--spacing-md);
+  gap: var(--spacing-sm);
   flex-direction: column;
-  min-height: 100%;
+  flex: 1 1 auto;
+  min-width: 0;
+  min-height: 0;
+  /* The image sets the panel height; the text column just fills it */
+  contain: size;
 }
 
 .current-project-content {
   display: flex;
   flex-direction: column;
   gap: var(--spacing-sm);
-  height: 100%;
+  flex: 1 1 auto;
+  min-height: 0;
 }
 
 .current-project-title {
@@ -64,19 +94,30 @@
   font-size: var(--font-size-sm);
   font-weight: var(--font-weight-normal);
   line-height: 1.5;
-  flex: 1 1 auto;
-  min-height: 0;
   overflow-y: auto;
-  scrollbar-width: thin;
-  scrollbar-color: var(--border-color) var(--background-secondary);
-  max-height: 170px;
+  /* Fills the space beside the image in whole lines (sized in JS) */
+  flex: 1 1 0;
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5em;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+.current-project-description::-webkit-scrollbar {
+  display: none;
+}
+
+.current-project-description.has-more {
+  -webkit-mask-image: linear-gradient(to bottom, #000 calc(100% - 1.5em), rgba(0, 0, 0, 0.2));
+  mask-image: linear-gradient(to bottom, #000 calc(100% - 1.5em), rgba(0, 0, 0, 0.2));
 }
 
 .current-project-links {
   display: flex;
   flex-direction: row;
   gap: var(--spacing-md);
-  margin-top: auto;
 }
 
 .current-project-links a {
@@ -134,13 +175,25 @@
   }
 
   .current-project-section {
+    display: flex;
     flex-direction: column;
     max-height: none;
+  }
+
+  .current-project-right {
+    padding: var(--padding-sm);
+    contain: none;
+  }
+
+  .current-project-description {
+    flex: none;
+    max-height: calc(1.5em * 9);
   }
 
   .current-project-image-container {
     max-width: 100%;
     width: 100%;
+    min-width: 0;
     max-height: 250px;
   }
 
