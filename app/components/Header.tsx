@@ -2,6 +2,7 @@
 
 import Link from "next/link"
 import { Home01Icon, File02Icon, News01Icon } from "hugeicons-react";
+import ThemeLink from "./ThemeLink"
 import "../header.css"
 
 const Header = () => {
@@ -24,24 +25,20 @@ const Header = () => {
               <Home01Icon size={16} />
               Home
             </Link>
-            <a
-              href="https://cdn.cognora.ca/Lekan.blog/Resume.pdf"
-              target="_blank"
-              rel="noopener noreferrer"
+            <Link
+              href="/resume"
               className="header-nav-link"
             >
               <File02Icon size={16} />
               Resume
-            </a>
-            <a
+            </Link>
+            <ThemeLink
               href="https://lekan.blog"
-              target="_blank"
-              rel="noopener noreferrer"
               className="header-nav-link last-child"
-            > 
+            >
               <News01Icon size={16} />
               Blog
-            </a>
+            </ThemeLink>
           </div>
       </nav>
     </header>
