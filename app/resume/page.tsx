@@ -1,26 +1,71 @@
-export const metadata = {
-  title: "Resume - Lekan Soyewo",
+import type { Metadata } from "next"
+import PrintButton from "./PrintButton"
+import "./resume.css"
+
+export const metadata: Metadata = {
+  title: "Resume",
   description:
-    "View the resume of Lekan Soyewo, a software engineer and Computer Science senior with advanced AI expertise, professional achievements, education, and projects.",
-};
+    "Resume of Lekan (Paul) Soyewo, product engineer, founder of PicksHub and York University Computer Science graduate.",
+  alternates: { canonical: "/resume" },
+  openGraph: { url: "/resume", title: "Resume · Lekan (Paul) Soyewo" },
+}
 
-import { GithubIcon } from "hugeicons-react"
+const summary =
+  "Product-minded software engineer and York University Computer Science graduate. I founded and build PicksHub, a Canadian sports publication, and own every layer of it: the Cloudflare Workers backend, the Next.js website and native iOS and Android apps. Before that I built StudyBuddy, an AI learning platform, at Cognora."
 
-const profileText =
-  "Accomplished Computer Science senior at York University, excelling in software engineering fundamentals and innovative AI development. Proficient in Python, Java, C/C++, and JavaScript, I've engineered production-ready applications using machine learning and NLP to address complex challenges and deliver tangible business outcomes. With hands-on experience in scalable web services, I'm poised to drive high-impact solutions in dynamic tech environments."
-
-const employmentHistory = [
+const experience = [
   {
-    title: "Researcher",
-    company: "Cognora",
-    responsibilities: [
-      "Spearheaded the strategic vision and product development for the StudyBuddy AI chat interface, from initial concept to market launch.",
-      "Engineered the complete backend architecture for the StudyBuddy AI platform. Led the comprehensive redesign and overhaul of the platform's frontend interface.",
-      "Architected a versatile agentic framework compatible with all major AI models and providers.",
-      "Created an internal dashboard to measure and track key user metrics.",
-      "Analyzed user data and educational outcomes to refine routing models, improving engagement and conversational effectiveness.",
-      "Evaluated the ethical implications of AI in education."
+    role: "Founder & Engineer",
+    company: "PicksHub",
+    link: "https://www.pickshub.ca",
+    points: [
+      "Built and run pickshub.ca, a Canadian sports publication covering news, analysis and predictions across 15+ leagues.",
+      "Designed the editorial backend on Cloudflare Workers that serves the website, the mobile apps and a Next.js newsroom admin.",
+      "Shipped a native iOS app on the App Store (SwiftUI, widgets, rich push notifications) and a native Android app (Kotlin, Jetpack Compose).",
+      "Built PicksHub Play, a predictions game whose results settle automatically from official finals.",
     ],
+  },
+  {
+    role: "Researcher",
+    company: "Cognora",
+    points: [
+      "Led product vision and development of StudyBuddy, an AI chat platform for learning, from first concept to launch.",
+      "Engineered the full backend and led a complete redesign of the frontend.",
+      "Architected an agentic framework that works with all major AI models and providers.",
+      "Built an internal dashboard for key user metrics, and analysed usage and learning outcomes to refine model routing.",
+    ],
+  },
+]
+
+const projects = [
+  {
+    title: "StudyBuddy",
+    link: "https://studdybuddy.ca",
+    linkLabel: "studdybuddy.ca",
+    points: [
+      "Grew an AI-powered learning platform to over 1,000 active users, with real-time collaboration features.",
+      "Integrated AI models through a custom Node.js framework, improving system performance by 40% with caching and WebSockets.",
+      "React frontend and Cloudflare Workers backend with sub-100ms response times under high concurrency.",
+    ],
+    tech: ["React", "Cloudflare Workers", "WebSockets", "Node.js", "Convex", "PostgreSQL", "Redis"],
+  },
+  {
+    title: "Sentiment Analysis of Movie Reviews",
+    link: "https://github.com/sportynest/setiment-analysis-model",
+    linkLabel: "GitHub",
+    points: [
+      "Built a sentiment classification pipeline on a large movie review dataset, improving accuracy by 15% with TF-IDF and LSTM models.",
+    ],
+    tech: ["Python", "scikit-learn", "TensorFlow", "NLP"],
+  },
+  {
+    title: "Moodle Email Scraper",
+    link: "https://github.com/sportynest/Moodle-Email-Scrapper",
+    linkLabel: "GitHub",
+    points: [
+      "Python scraper with parallel processing via ThreadPoolExecutor, 50% faster than sequential, with rate limiting and error handling.",
+    ],
+    tech: ["Python", "BeautifulSoup"],
   },
 ]
 
@@ -28,193 +73,118 @@ const education = [
   {
     school: "York University",
     degree: "Bachelor of Science, Computer Science",
-    location: "Toronto, ON",
+    detail: "Toronto, ON · Graduated June 2026",
   },
   {
     school: "Dalhousie University",
     degree: "Bachelor of Science, Applied Computer Science",
-    location: "Halifax, NS",
-  },
-]
-
-const projects = [
-  {
-    title: "StudyBuddy (Full-Stack Educational Platform)",
-    link: "https://Studdybuddy.ca",
-    highlights: [
-      "Led the end-to-end development of a scalable AI-powered learning platform, growing the user base to over 1,000 active users and enhancing engagement through real-time collaboration features.",
-      "Integrated advanced AI models via a custom Node.js based framework, achieving a 40% improvement in system performance through optimized caching and WebSocket-based interactions.",
-      "Built with React for the front-end and Cloudflare Workers for the back-end, ensuring sub-100ms response times and seamless handling of high-concurrency loads, demonstrating expertise in AI integration, scalability, and modern tech stacks.",
-    ],
-    technologies: ["React", "Cloudflare Workers", "WebSockets", "Node.js", "Python", "LLM APIs", "Redis", "PostgreSQL", "Convex", "PostHog"],
-  },
-  {
-    title: "Sentiment Analysis of Movie Reviews",
-    link: "https://github.com/sportynest/setiment-analysis-model",
-    highlights: [
-      "Designed and deployed a machine learning pipeline for sentiment analysis on a large movie review dataset, boosting prediction accuracy by 15% using NLP techniques like TF-IDF and LSTM models.",
-      "Utilized Python, Scikit-learn, and TensorFlow for end-to-end development, including data preprocessing, model training, and evaluation—highlighting proficiency in ML workflows and delivering actionable insights for real-world applications.",
-      "(GitHub: https://github.com/sportynest/setiment-analysis-model)"
-    ],
-    technologies: ["Python", "Scikit-learn", "TensorFlow", "LSTM", "Pandas", "NLP"],
-  },
-  {
-    title: "Moodle Email Scraper",
-    link: "https://github.com/sportynest/Moodle-Email-Scrapper",
-    highlights: [
-      "Engineered a Python-based web scraping tool using BeautifulSoup to extract and manage student emails from Moodle platforms, incorporating parallel processing with ThreadPoolExecutor for a 50% speed increase.",
-      "Enhanced efficiency with rate limiting and error handling, streamlining communication for educational settings—exemplifying skills in automation, data extraction, and scalable scripting.",
-      "(GitHub: https://github.com/sportynest/Moodle-Email-Scrapper)"
-    ],
-    technologies: ["Python", "BeautifulSoup", "ThreadPoolExecutor", "Web Scraping"],
+    detail: "Halifax, NS",
   },
 ]
 
 const skills = [
-  "Python",
-  "JavaScript",
-  "TypeScript", 
-  "React",
-  "TensorFlow",
-  "Machine Learning",
-  "Natural Language Processing",
-  "Node.js",
-  "Problem Solving",
-  "Web Scraping",
-  "Data Analysis"
+  { group: "Languages", items: ["TypeScript", "JavaScript", "Swift", "Kotlin", "Python", "Java", "C/C++"] },
+  { group: "Product", items: ["Next.js", "React", "SwiftUI", "Jetpack Compose", "Cloudflare Workers", "Node.js", "Convex"] },
+  { group: "AI & Data", items: ["LLM APIs", "Machine Learning", "NLP", "TensorFlow", "Data Analysis"] },
 ]
 
 export default function Resume() {
   return (
-    <div className="space-y-12">
-      {/* Header Section */}
-      <section className="bg-card text-card-foreground p-6 rounded-lg transition-shadow">
-        <div className="flex flex-col md:flex-row md:justify-between md:items-start">
-          <div>
-            <h1 className="text-5xl font-bold mb-4 text-primary">LEKAN SOYEWO</h1>
-            <p className="text-2xl mb-2 text-muted-foreground">Software Engineer</p>
-            <p className="text-lg mb-2 text-muted-foreground">Toronto, Canada</p>
-            <a
-              href="mailto:lekan.soyewo@icloud.com"
-              className="text-foreground hover:text-primary transition-colors text-lg font-medium underline underline-offset-4 decoration-muted-foreground hover:decoration-primary"
-              style={{ transition: "color 0.2s, text-decoration-color 0.2s" }}
-            >
-              lekan.soyewo@icloud.com
+    <article className="resume">
+      <header className="resume-head">
+        <div className="resume-identity">
+          <h1 className="resume-name">Lekan (Paul) Soyewo</h1>
+          <p className="resume-title">Product Engineer · Toronto, Canada</p>
+          <p className="resume-contact">
+            <a href="mailto:lekan.soyewo@icloud.com">lekan.soyewo@icloud.com</a>
+            <span aria-hidden="true">·</span>
+            <a href="https://lekan.ca">lekan.ca</a>
+            <span aria-hidden="true">·</span>
+            <a href="https://github.com/sportynest" target="_blank" rel="noopener noreferrer">
+              github.com/sportynest
             </a>
-          </div>
-          <div className="flex flex-col space-y-4 items-end">
-            <div className="flex items-center space-x-6">
-              <a
-                href="https://github.com/sportynest"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-foreground hover:text-primary transition-colors"
-              >
-                <GithubIcon size={28} />
-              </a>
-            </div>
-          </div>
+          </p>
         </div>
+        <PrintButton />
+      </header>
+
+      <section className="resume-section" aria-labelledby="resume-summary">
+        <h2 id="resume-summary" className="resume-label">Summary</h2>
+        <p className="resume-summary">{summary}</p>
       </section>
 
-      {/* Summary Section */}
-      <section className="bg-card text-card-foreground p-6 rounded-lg">
-        <h2 className="text-2xl font-semibold mb-4 border-b border-border pb-2">Summary</h2>
-        <p className="text-muted-foreground">{profileText}</p>
-      </section>
-
-      {/* Experience Section */}
-      <section className="bg-card text-card-foreground p-6 rounded-lg transition-shadow">
-        <h2 className="text-2xl font-semibold mb-6 border-b border-border pb-2">Experience</h2>
-        {employmentHistory.map((job, index) => (
-          <div key={index} className="mb-8 last:mb-0">
-            <div className="flex flex-col md:flex-row md:items-center md:justify-between mb-3">
-              <h3 className="text-xl font-semibold text-primary">{job.title}</h3>
-              <p className="text-lg text-muted-foreground font-medium">{job.company}</p>
-            </div>
-            <ul className="space-y-2">
-              {job.responsibilities.map((resp, respIndex) => (
-                <li key={respIndex} className="text-foreground flex items-start">
-                  <span className="text-primary mr-2">•</span>
-                  <span className="leading-relaxed">{resp}</span>
-                </li>
-              ))}
-            </ul>
-          </div>
-        ))}
-      </section>
-
-      {/* Education Section */}
-      <section className="bg-card text-card-foreground p-6 rounded-lg transition-shadow">
-        <h2 className="text-2xl font-semibold mb-6 border-b border-border pb-2">Education</h2>
-        {education.map((edu, index) => (
-          <div key={index} className="mb-6 last:mb-0">
-            <div className="flex flex-col md:flex-row md:items-center md:justify-between">
-              <div>
-                <h3 className="text-xl font-semibold text-primary">{edu.school}</h3>
-                <p className="text-lg text-muted-foreground">{edu.degree}</p>
-              </div>
-              <p className="text-muted-foreground mt-1 md:mt-0 text-sm">
-                {edu.location}
-              </p>
-            </div>
-          </div>
-        ))}
-      </section>
-
-      {/* Projects Section */}
-      <section className="bg-card text-card-foreground p-6 rounded-lg">
-        <h2 className="text-2xl font-semibold mb-6 border-b border-border pb-2">Projects</h2>
-        <div className="grid gap-8">
-          {projects.map((proj, index) => (
-            <div key={index} className="bg-accent/5 rounded-lg p-6 hover:bg-accent/10 transition-colors">
-              <div className="flex flex-col md:flex-row md:items-center md:justify-between mb-4">
-                <h3 className="text-xl font-semibold text-primary">{proj.title}</h3>
-                <a
-                  href={proj.link}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="text-muted-foreground hover:text-primary transition-colors mt-1 md:mt-0"
-                >
-                  {proj.link.replace(/^https?:\/\//, "")} →
-                </a>
-              </div>
-              <ul className="space-y-2 mb-4">
-                {proj.highlights.map((point, pointIndex) => (
-                  <li key={pointIndex} className="text-foreground flex items-start">
-                    <span className="text-primary mr-2">•</span>
-                    <span>{point}</span>
-                  </li>
+      <section className="resume-section" aria-labelledby="resume-experience">
+        <h2 id="resume-experience" className="resume-label">Experience</h2>
+        <div className="resume-entries">
+          {experience.map((job) => (
+            <div key={job.company} className="resume-entry">
+              <h3 className="resume-entry-title">
+                {job.role}
+                <span className="resume-entry-at">
+                  {" "}at{" "}
+                  {job.link ? (
+                    <a href={job.link} target="_blank" rel="noopener noreferrer">{job.company}</a>
+                  ) : (
+                    job.company
+                  )}
+                </span>
+              </h3>
+              <ul className="resume-points">
+                {job.points.map((point) => (
+                  <li key={point}>{point}</li>
                 ))}
               </ul>
-              {proj.technologies && (
-                <div className="flex flex-wrap gap-2">
-                  {proj.technologies.map((tech, techIndex) => (
-                    <span
-                      key={techIndex}
-                      className="bg-primary/10 text-primary px-3 py-1 rounded-full text-sm"
-                    >
-                      {tech}
-                    </span>
-                  ))}
-                </div>
-              )}
             </div>
           ))}
         </div>
       </section>
 
-      {/* Skills Section */}
-      <section className="bg-card text-card-foreground p-6 rounded-lg">
-        <h2 className="text-2xl font-semibold mb-4 border-b border-border pb-2">Skills</h2>
-        <div className="flex flex-wrap gap-2">
-          {skills.map((skill, index) => (
-            <span key={index} className="bg-accent text-accent-foreground px-3 py-1 rounded-full text-sm">
-              {skill}
-            </span>
+      <section className="resume-section" aria-labelledby="resume-projects">
+        <h2 id="resume-projects" className="resume-label">Projects</h2>
+        <div className="resume-entries">
+          {projects.map((project) => (
+            <div key={project.title} className="resume-entry">
+              <h3 className="resume-entry-title">
+                {project.title}
+                <a className="resume-entry-link" href={project.link} target="_blank" rel="noopener noreferrer">
+                  {project.linkLabel}
+                </a>
+              </h3>
+              <ul className="resume-points">
+                {project.points.map((point) => (
+                  <li key={point}>{point}</li>
+                ))}
+              </ul>
+              <p className="resume-tech">{project.tech.join(" · ")}</p>
+            </div>
           ))}
         </div>
       </section>
-    </div>
+
+      <section className="resume-section" aria-labelledby="resume-education">
+        <h2 id="resume-education" className="resume-label">Education</h2>
+        <div className="resume-entries">
+          {education.map((edu) => (
+            <div key={edu.school} className="resume-entry">
+              <h3 className="resume-entry-title">{edu.school}</h3>
+              <p className="resume-entry-sub">{edu.degree}</p>
+              <p className="resume-entry-meta">{edu.detail}</p>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      <section className="resume-section" aria-labelledby="resume-skills">
+        <h2 id="resume-skills" className="resume-label">Skills</h2>
+        <dl className="resume-skills">
+          {skills.map((row) => (
+            <div key={row.group} className="resume-skill-row">
+              <dt>{row.group}</dt>
+              <dd>{row.items.join(" · ")}</dd>
+            </div>
+          ))}
+        </dl>
+      </section>
+    </article>
   )
 }
